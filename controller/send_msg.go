@@ -2,7 +2,7 @@ package controller
 
 import (
 	"aws-test/schema"
-	"fmt"
+	"aws-test/services"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
@@ -14,5 +14,5 @@ func SendMsg(c *gin.Context) {
 		c.JSON(http.StatusUnprocessableEntity, gin.H{"error": err.Error()})
 	}
 
-	fmt.Println(response)
+	services.SendSNSMsg(response)
 }
